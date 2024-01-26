@@ -119,9 +119,9 @@ int main(){
 
                 printf("\n");
                 if(parenthisisMatch(user, size)){
-                    printf("Expression Match\n");
+                    printf("Parenthesis Balanced\n");
                 } else{
-                    printf("The Parameter did not match\n");
+                    printf("Parenthesis Not Balanced\n");
                 }
                 printf("\n");
                 break;

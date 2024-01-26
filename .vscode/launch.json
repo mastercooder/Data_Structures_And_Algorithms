@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/Coding/VS code/Data Structures & Algorithms/Code",
-      "program": "d:/Coding/VS code/Data Structures & Algorithms/Code/build/Debug/outDebug",
+      "cwd": "d:/Coding/VS code/Data Structures & Algorithms/Data_Structures_And_Algorithms",
+      "program": "d:/Coding/VS code/Data Structures & Algorithms/Data_Structures_And_Algorithms/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
