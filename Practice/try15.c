@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 
 struct Stack
 {
@@ -20,17 +19,17 @@ int isEmpty(struct Stack *ptr)
 
 int isFull(struct Stack *ptr)
 {
-    if(ptr->top==ptr->size-1){
+    if(ptr->top == ptr->size-1){
         return 1;
     } else{
         return 0;
     }
 }
 
-void push(struct Stack *ptr, char    value)
+void push(struct Stack *ptr, char value)
 {
     if(isFull(ptr)){
-        printf("Stack Overflow\n");
+        printf("Stack Overflow!\n");
     } else{
         ptr->top++;
         ptr->arr[ptr->top] = value;
@@ -50,17 +49,16 @@ char pop(struct Stack *ptr)
 
 int match(char a, char b)
 {
-    if (a == '(' && b == ')'){
+    if(a=='(' && b==')'){
         return 1;
-    } else if (a == '{' && b == '}') {
+    } else if(a=='[' && b==']'){
         return 1;
-    } else if (a == '[' && b == ']') {
+    } else if(a=='{' && b=='}'){
         return 1;
-    } else {
+    } else{
         return 0;
     }
 }
-
 
 int parenthisisMatch(char *exp, int size)
 {
@@ -85,7 +83,7 @@ int parenthisisMatch(char *exp, int size)
             }
         }
     }
-    
+
     if(isEmpty(sp)){
         return 1;
     } else{
@@ -95,8 +93,7 @@ int parenthisisMatch(char *exp, int size)
 
 int main(){
     int size;
-
-    printf("Enter the size of your expression: ");
+    printf("Enter the size: ");
     scanf("%d", &size);
 
     while (1)
@@ -106,9 +103,9 @@ int main(){
         scanf("%s", query);
 
         if(parenthisisMatch(query, size)){
-            printf("Expression Balanced\n");
+            printf("Expression Balanced!\n");
         } else{
-            printf("Expression Not Balanced\n");
+            printf("Expression Not Balanced!\n");
         }
     }
     return 0;
