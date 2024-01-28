@@ -101,7 +101,7 @@ char *infixtoPostfix(char *infix, int size)
         postFix[j] = pop(sp);
         j++;
     }
-    postFix = '\0';
+    postFix[j] = '\0';
     return postFix;
 }
 
@@ -112,11 +112,10 @@ int main(){
 
     char query[size];
     printf("Enter the Expression: ");
-    scanf("%d", query);
+    scanf("%s", query);
     printf("\n");
     printf("The Infix is: %s\n", query);
     printf("The postFix is: %s", infixtoPostfix(query, size));
-    
     
     return 0;
 }
