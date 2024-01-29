@@ -124,7 +124,7 @@ int main(){
                     printf("Parenthesis Not Balanced\n");
                 }
                 printf("\n");
-                break;
+                break;  
             }
         
         default:

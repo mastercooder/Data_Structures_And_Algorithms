@@ -99,7 +99,7 @@ void stackTop(struct Node * ptr)
     if(isEmpty(ptr)){
         printf("Stack is Currently Emtpy\n");
     } else{
-        printf("Element %d\n", top->data);
+        printf("Element %d\n", ptr->data);
     }
 }
 

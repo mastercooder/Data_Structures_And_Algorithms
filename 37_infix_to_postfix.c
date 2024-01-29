@@ -112,7 +112,7 @@ int main(){
 
     char query[size];
     printf("Enter the Expression: ");
-    scanf("%s", query);
+    scanf("%", query);
     printf("\n");
     printf("The Infix is: %s\n", query);
     printf("The postFix is: %s", infixtoPostfix(query, size));
