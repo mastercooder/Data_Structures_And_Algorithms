@@ -10,7 +10,7 @@ struct Node
 struct Node* f = NULL;
 struct Node* r = NULL;
 
-void linkedListTraveral(struct Node* ptr)
+void linkedListTraversal(struct Node* ptr)
 {
     while (ptr!=NULL)
     {
@@ -23,7 +23,7 @@ void enqueue(int value)
 {
     struct Node* q = (struct Node*)malloc(sizeof(struct Node));
     if(q==NULL){
-        printf("The Queue is Full!\n");
+        printf("The Queue is Full\n");
     } else{
         q->data = value;
         q->next = NULL;
@@ -51,62 +51,81 @@ int dequeue()
 
 int main(){
     int size, query;
-    printf("Enter the size of Queue: ");
+    printf("Enter the size of the Queue: ");
     scanf("%d", &size);
 
     for (int i = 0; i < size; i++)
     {
         int value;
         printf("Element %d: ", i+1);
-        scanf("%d", value);
+        scanf("%d", &value);
         enqueue(value);
     }
     printf("\n");
-    linkedListTraveral(f);
-    printf("Queue has been created successfully!!!\n");
-    
+    linkedListTraversal(f);
+    printf("\n");
+    printf("Queue ha been created successfully!\n");
+
     while (1)
     {
-        printf("Enter the Opeartion: ");
+        printf("\n");
+        printf("Enter the Operation || 0 to Exit: ");
         scanf("%d", &query);
+
+        if(query==0){
+            printf("\n");
+            printf("Exiting the Loop!\n");
+            printf("\n");
+            return -1;
+            break;
+        }
 
         switch (1)
         {
             case 1:
             {
                 printf("\n");
-                printf(" enqueue\n");
-                printf("-------------\n");
-                int size, value;
-                printf("How much element you want to enter the Queue: ");
-                scanf("%d", &size);
-                for (int i = 0; i < size; i++)
-                {
-                    int value;
-                    printf("Enter the value: ");
-                    scanf("%d", &value);
-                    enqueue(value);
-                }
-                linkedListTraveral(f);
-                printf("\n");
-                break;
-            }
-        
-            case 2:
-            {
-                printf("\n");
-                printf(" dequeue\n");
-                printf("-------------\n");
-                dequeue();
-                linkedListTraveral(f);
+                printf(" Linked List Traveral\n");
+                printf("--------------------------\n");
+                linkedListTraversal(f);
                 printf("\n");
                 break;
             }
 
+            case 2:
+            {
+                printf("\n");
+                printf(" enqueue\n");
+                printf("-------------\n");
+                int size, value;
+                printf("No of Element you want to enter: ");
+                scanf("%d", &size);
+                for (int i = 0; i < size; i++)
+                {
+                    printf("Element: %d: ", i+1);
+                    scanf("%d", &value);
+                    enqueue(value);
+                }
+                printf("\n");
+                break;
+            }
+
+            case 3:
+            {
+                printf("\n");
+                printf(" dequeue\n");
+                printf("-----------\n");
+                int dequeueval = dequeue();
+                printf("Element %d", dequeueval);
+                printf("\n");
+                break;
+            }
+        
         default:
-            printf("Something Went Wrong!\n");
+            printf("Something Went Wron!\n");
             break;
         }
     }
     
+    return 0;
 }
