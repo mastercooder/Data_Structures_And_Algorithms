@@ -10,6 +10,15 @@ struct Node
 struct Node* f = NULL;
 struct Node* r = NULL;
 
+void Opeartion()
+{
+    printf("\n");
+    printf("1: Linked List Traveral\n");
+    printf("2: enqueue\n");
+    printf("3: dequeue\n");
+    printf("\n");
+}
+
 void linkedListTraversal(struct Node* ptr)
 {
     while (ptr!=NULL)
@@ -50,13 +59,12 @@ int dequeue()
 }
 
 int main(){
-    int size, query;
+    int size, query, value;
     printf("Enter the size of the Queue: ");
     scanf("%d", &size);
 
     for (int i = 0; i < size; i++)
     {
-        int value;
         printf("Element %d: ", i+1);
         scanf("%d", &value);
         enqueue(value);
@@ -68,6 +76,8 @@ int main(){
 
     while (1)
     {
+        printf("\n");
+        Opeartion();
         printf("\n");
         printf("Enter the Operation || 0 to Exit: ");
         scanf("%d", &query);
@@ -97,12 +107,11 @@ int main(){
                 printf("\n");
                 printf(" enqueue\n");
                 printf("-------------\n");
-                int size, value;
-                printf("No of Element you want to enter: ");
+                printf("Enter the size: ");
                 scanf("%d", &size);
                 for (int i = 0; i < size; i++)
                 {
-                    printf("Element: %d: ", i+1);
+                    printf("Element %d: ", i+1);
                     scanf("%d", &value);
                     enqueue(value);
                 }
