@@ -90,12 +90,17 @@ void Opeartion()
     printf("1: Linked List Traveral\n");
     printf("2: enqueueF\n");
     printf("3: enqueueR\n");
+    printf("4: dequeueF\n");
+    printf("5: dequeueR\n");
     printf("\n");
 }
+
 int main(){
     int size, value, query;
+
     printf("Enter the size: ");
     scanf("%d", &size);
+
     for (int i = 0; i < size; i++)
     {
         printf("Element %d: ", i+1);
@@ -107,6 +112,90 @@ int main(){
     while (1)
     {
         printf("\n");
+        Opeartion();
+        printf("\n");
+        printf("Enter the Opeartion Number || 0 to Exit: ");
+        scanf("%d", &query);
+        
+        if(query==0){
+            printf("\n");
+            printf("Exiting the Loop!\n");
+            printf("\n");
+            return -1;
+        }
+
+        switch (query)
+        {
+            case 1:
+            {
+                printf("\n");
+                printf(" Linked List Travearl\n");
+                printf("-------------------------\n");
+                linkedListTraveral(f);
+                printf("\n");
+                break;
+            }
+
+            case 2:
+            {
+                printf("\n");
+                printf(" enqueueF\n");
+                printf("-------------\n");
+                printf("Enter the size: ");
+                scanf("%d", &size);
+                for (int i = 0; i < size; i++)
+                {
+                    printf("Element %d: ", i+1);
+                    scanf("%d", &value);
+                    enqueueF(value);
+                }
+                printf("\n");
+                break;  
+            }
+
+            case 3:
+            {
+                printf("\n");
+                printf(" enqueueR\n");
+                printf("------------\n");
+                printf("Enter the size: ");
+                scanf("%d", &size);
+                for (int i = 0; i < size; i++)
+                {
+                    printf("Element %d: ", i+1);
+                    scanf("%d", &value);
+                    enqueueR(value);
+                }
+                printf("\n");
+                break;
+            }
+
+            case 4:
+            {
+                printf("\n");
+                printf(" dequeueF\n");
+                printf("--------------\n");
+                int dequeueFvalue = dequeueF();
+                printf("Elmenet %d\n", dequeueFvalue);
+                printf("\n");
+                break;
+            }
+
+            case 5:
+            {
+                printf("\n");
+                printf(" dequeueR\n");
+                printf("--------------\n");
+                int dequeueRvalue = dequeueR();
+                printf("Element %d\n", dequeueRvalue);
+                printf("\n");
+                break;
+            }
+        
+        default:
+            printf("Something Went Wrong!\n");
+            break;
+        }
     }
     return 0;
 }
