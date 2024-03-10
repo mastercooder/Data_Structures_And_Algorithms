@@ -17,15 +17,60 @@ void displayArray(int *arr, int size){
     }
 }
 
+// void bubbleshortAdvance(int *arr, int size){
+//     int isSorted, temp;
+//     for(int i = 0; i<size-1; i++){
+//         printf("Number of passes %d\n", i+1);
+//         isSorted = 1;
+//         for(int j = 0; j < size-1-i; j++){
+//             if (arr[j]>arr[j+1]){
+//                 temp = arr[j];
+//                 arr[j] = arr[j+1];
+//                 arr[j+1] = temp;
+//                 isSorted = 0;
+//             }
+//         }
+//         if(isSorted){
+//             return;
+//         }
+//     }
+// }
+
+// void insertionSort(int *arr, int size){
+//     int key, j;
+//     for(int i = 0; i <= size-1; i++){
+//         key = arr[i];
+//         j = i-1;
+//         while(j >=0 && arr[j]>key){
+//             arr[j+1] = arr[j];
+//             j--;
+//         }
+//         arr[j+1] = key;
+//     }
+// }
+
+// void selectionSort(int *arr, int size){
+//     int indexOfMin, temp;
+//     for(int i = 0; i < size-1; i++){
+//         indexOfMin = i;
+//         for(int j = i+1; j < size; j++){
+//             if(arr[j]<arr[indexOfMin]){
+//                 indexOfMin = j;
+//             }
+//         }
+//         temp = arr[i];
+//         arr[i] = arr[indexOfMin];
+//         arr[indexOfMin] = temp;
+//     }
+// }
+
 void bubbleshortAdvance(int *arr, int size){
-    int isSorted, temp;
-    
-    for(int i = 0; i<size-1; i++){
-        printf("Number of passes %d\n", i+1);
+    int temp, isSorted;
+    for(int i = 0; i < size-1; i++){
+        printf("Number of Passes %d", i+1);
         isSorted = 1;
-    
         for(int j = 0; j < size-1-i; j++){
-            if (arr[j]>arr[j+1]){
+            if(arr[j]>arr[j+1]){
                 temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
@@ -39,11 +84,11 @@ void bubbleshortAdvance(int *arr, int size){
 }
 
 void insertionSort(int *arr, int size){
-    int key, j;
+    int j, key;
     for(int i = 0; i <= size-1; i++){
         key = arr[i];
         j = i-1;
-        while(j >=0 && arr[j]>key){
+        while(j >= 0 && arr[j]>key){
             arr[j+1] = arr[j];
             j--;
         }
@@ -66,11 +111,49 @@ void selectionSort(int *arr, int size){
     }
 }
 
+int partion(int *arr, int low, int high){
+    int pivod = low;
+    int i = low+1;
+    int j = high;
+    int temp;
+
+    do{
+        while(arr[i]<=pivod){
+            i++;
+        }
+        while(arr[j]>pivod){
+            j--;
+        }
+
+        if(i<j){
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    } while (i < j);
+    
+    temp = arr[low];
+    arr[low] = arr[j];
+    arr[j] = temp;
+    return j;
+}
+
+void quickSort(int *arr, int low, int high){
+    int partitionIndex;
+
+    if(low < high){
+        partitionIndex = partion(arr, low, high);
+        quichSort(arr, low, partitionIndex-1); // Sort the left Array
+        quichSort(arr, partitionIndex+1, high); // Sort the right Array 
+    }
+}
+
 void Opeartion(){
     printf("\n");
     printf("1: bubbleSortAdvance\n");
     printf("2: insertionSort\n");
     printf("3: selectionSort\n");
+    printf("4: quickSort\n");
     printf("\n");
 }
 
@@ -126,6 +209,18 @@ int main(){
                 printf(" selectionSort\n");
                 printf("------------------\n");
                 selectionSort(arr, size);
+                printf("\n");
+                displayArray(arr, size);
+                printf("\n");
+                break;
+            }
+
+            case 4:
+            {
+                printf("\n");
+                printf(" quickSort\n");
+                printf("------------------\n");
+                quickSort(arr, 0, size-1);
                 printf("\n");
                 displayArray(arr, size);
                 printf("\n");
