@@ -105,17 +105,60 @@ void quickSort(int *arr, int low, int high){
 
     if(low < high){
         partitionIndex = partion(arr, low, high);
-        quichSort(arr, low, partitionIndex-1); // Sort the left Array
-        quichSort(arr, partitionIndex+1, high); // Sort the right Array 
+        quickSort(arr, low, partitionIndex-1); // Sort the left Array
+        quickSort(arr, partitionIndex+1, high); // Sort the right Array 
     }
 }
 
 
 // ----------------------------------------------margeSort---------------------------------------------------
-void marge(int *A, int low, int mid int high){
-    
+void marge(int *A, int low, int mid, int high){
+    int i, j, k, B[100];
+    i = low;
+    j = mid+1;
+    k = low;
+
+    while(i <= mid && j <= high){
+        if(A[i] < A[j]){
+            B[k] = A[i];
+            i++;
+            k++;
+        } else{
+            B[k] = A[j];
+            j++;
+            k++;
+        }
+    }
+
+    while(i <= mid){
+        B[k] = A[i];
+        i++;
+        k++;
+    }
+
+    while(j <= high){
+        B[k] = A[j];
+        j++;
+        k++;
+    }
+
+    for(int i = low; i<=high; i++){
+        A[i] = B[i];
+    }
 }
 
+void margeSort(int *A, int low, int high){
+    int mid;
+    if(low<high){
+        mid = (low + high) / 2;
+        margeSort(A, low, mid);
+        margeSort(A, mid+1, high);
+        marge(A, low, mid, high);
+    }
+}
+
+
+// ---------------------------------------------------------------------------------------------------------------
 void Opeartion(){
     printf("\n");
     printf("1: bubbleSortAdvance\n");
@@ -127,9 +170,10 @@ void Opeartion(){
 }
 
 int main(){
-    printf("\n");
     while (1){
         int size, query;
+        printf("\n");
+        printf("\n");
         printf("Enter the size: ");
         scanf("%d", &size);
         
@@ -195,7 +239,23 @@ int main(){
                 printf("\n");
                 break;
             }
+
+            case 5:
+            {
+                printf("\n");
+                printf(" margeSort\n");
+                printf("---------------\n");
+                margeSort(arr, 0, size-1);
+                printf("\n");
+                displayArray(arr, size);
+                printf("\n");
+                break;
+            }
+
+            default:
+                printf("Something Went Wrong!\n");
         }
+
     }
 
     printf("\n");
