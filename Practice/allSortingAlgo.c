@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
 
 // ----------------------------------------------ArrayOperation-------------------------------------------
 void makeArray(int *arr, int size){
@@ -157,15 +159,55 @@ void margeSort(int *A, int low, int high){
     }
 }
 
+// ----------------------------------------------countSort---------------------------------------------------
+int maximum(int *arr, int size){
+    int max = INT_MIN;
+    for(int i = 0; i<size; i++){
+        if(max<arr[i]){
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+void countSort(int *arr, int size){
+    int i, j, max;
+    max = maximum(arr, size);
+    int *count = (int *)malloc((max+1)*sizeof(int));
+    
+    for(i = 0; i<max+1; i++){
+        count[i] = 0;
+    }
+
+    for(i = 0; i<size; i++){
+        count[arr[i]] = count[arr[i]] +1; 
+    }
+
+    i = 0;
+    j = 0;
+    
+    while(i<=max){
+        if(count[i]>0){
+            arr[j] = i;
+            count[i]--;
+            j++;
+        } else{
+            i++;
+        }
+    }
+}
 
 // ---------------------------------------------------------------------------------------------------------------
 void Opeartion(){
     printf("\n");
+    printf("  You can sort the above Array in the following ways: \n");
+    printf("------------------------------------------------------\n");
     printf("1: bubbleSortAdvance\n");
     printf("2: insertionSort\n");
     printf("3: selectionSort\n");
     printf("4: quickSort\n");
     printf("5: margeSort\n");
+    printf("6: countSort\n");
     printf("\n");
 }
 
@@ -174,7 +216,7 @@ int main(){
         int size, query;
         printf("\n");
         printf("\n");
-        printf("Enter the size: ");
+        printf("Enter size of the Array: ");
         scanf("%d", &size);
         
         printf("\n");
@@ -190,6 +232,11 @@ int main(){
         printf("Enter the Opeartion Number || 0 to eixt: ");
         scanf("%d", &query);
         printf("\n");
+
+        if(query==0){
+            printf("Exiting the loop\n");
+            return -1;
+        }
 
         switch(query){
             case 1:
@@ -252,12 +299,25 @@ int main(){
                 break;
             }
 
+            case 6:
+            {
+                printf("\n");
+                printf(" countSort\n");
+                printf("---------------\n");
+                countSort(arr, size);
+                printf("\n");
+                displayArray(arr, size);
+                printf("\n");
+                break;
+            }
+
             default:
                 printf("Something Went Wrong!\n");
         }
 
     }
 
+    printf("Enter a new Array: \n");
     printf("\n");
     return 0;
 }
