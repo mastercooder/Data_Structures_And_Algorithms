@@ -22,7 +22,7 @@ void displayArray(int *arr, int size){
 
 
 // ----------------------------------------------bubbleSort------------------------------------------- 
-void bubbleshortAdvance(int *arr, int size){
+void bubbleshort(int *arr, int size){
     int isSorted, temp;
     for(int i = 0; i<size-1; i++){
         printf("Number of passes %d\n", i+1);
@@ -202,7 +202,7 @@ void Opeartion(){
     printf("\n");
     printf("  You can sort the above Array in the following ways: \n");
     printf("------------------------------------------------------\n");
-    printf("1: bubbleSortAdvance\n");
+    printf("1: bubbleSort\n");
     printf("2: insertionSort\n");
     printf("3: selectionSort\n");
     printf("4: quickSort\n");
@@ -242,9 +242,9 @@ int main(){
             case 1:
             {
                 printf("\n");
-                printf(" bubbleshortAdvance\n");
+                printf(" bubbleshort\n");
                 printf("--------------------\n");
-                bubbleshortAdvance(arr, size);
+                bubbleshort(arr, size);
                 printf("\n");
                 displayArray(arr, size);
                 printf("\n");

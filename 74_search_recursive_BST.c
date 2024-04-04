@@ -15,14 +15,6 @@ struct Node* createNode(int data){
     return n;
 };
 
-void inOrder(struct Node* root){
-    if(root!=NULL){
-        inOrder(root->left);
-        printf("%d ", root->data);
-        inOrder(root->right);
-    }
-}
-
 struct Node* search(struct Node* root, int key){
     if(root==NULL){
         return NULL;
