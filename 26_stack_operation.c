@@ -113,7 +113,6 @@ int main(){
                 if(isFull(s)){
                     printf("The stack is Full\n");
                 } else{
-                    int value;
                     printf("Enter the value\n");
                     for (int i = 0; i < size; i++)
                     {
